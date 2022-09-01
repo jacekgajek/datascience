@@ -2,18 +2,18 @@ import IPython.display as dis
 import numpy as np
 
 
-def printmd(expr):
+def printlatex(expr):
     dis.display(dis.Markdown(r"$$\begin{align}" + expr + r"\end{align}$$"))
 
 
-def printpol(p):
+def latex_polynomial(p, varname):
     def powstr(k):
         if k == 0:
             return ""
         elif k == 1:
-            return "z"
+            return varname
         else:
-            return "z^" + str(k)
+            return varname + "^" + str(k)
 
     def op(a):
         if a == 1:
@@ -24,10 +24,10 @@ def printpol(p):
             return "-" + str(-a)
 
     expr = [op(a) + powstr(k) for k, a in enumerate(p[0:len(p)])]
-    printmd("s(z)=" + ''.join(np.flip(expr)))
+    return ''.join(np.flip(expr))
 
 
-def printmatrix(A: np.ndarray):
+def latex_matrix(A: np.ndarray):
     expr = r"\begin{bmatrix}"
     n, m = A.shape
     for i in range(0, n):
