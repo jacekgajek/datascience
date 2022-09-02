@@ -2,11 +2,11 @@ import IPython.display as dis
 import numpy as np
 
 
-def printlatex(expr):
+def print_latex(expr):
     dis.display(dis.Markdown(r"$$\begin{align}" + expr + r"\end{align}$$"))
 
 
-def latex_polynomial(p, varname):
+def polynomial(p, varname):
     def powstr(k):
         if k == 0:
             return ""
@@ -27,7 +27,7 @@ def latex_polynomial(p, varname):
     return ''.join(np.flip(expr))
 
 
-def latex_matrix(A: np.ndarray):
+def matrix(A: np.ndarray):
     expr = r"\begin{bmatrix}"
     n, m = A.shape
     for i in range(0, n):
